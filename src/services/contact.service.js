@@ -21,13 +21,10 @@ module.exports.identifyService = async (email, phoneNumber) => {
         const result = await Promise.all([
             getContactsByPrecedence(contacts, "primary"),
             getContactsByPrecedence(contacts, "secondary")
-            // areContactsAvailable(latestContacts, email, phoneNumber)
         ])
 
-         primaryContacts = result[0] ?? []
+        primaryContacts = result[0] ?? []
         const secondaryContacts = result[1] ?? []
-        // const { emailExist, phoneNumberExist } = result[2]
-        // primaryContacts = await contactModel.fetchPrimaryContacts(pool, email, phoneNumber)
 
         let idToLink = primaryContacts[0]?.id
         if (primaryContacts.length >= 2) {
@@ -35,7 +32,7 @@ module.exports.identifyService = async (email, phoneNumber) => {
             console.log(primaryContacts.slice(1))
             await contactModel.updateContactAsSecondary(pool, primaryIds, idToLink)
         }
-        else if(primaryContacts.length == 0 && secondaryContacts.length > 0){
+        else if (primaryContacts.length == 0 && secondaryContacts.length > 0) {
             idToLink = secondaryContacts[0]?.linkedId
             await contactModel.insertContact(pool, email, phoneNumber, "secondary", idToLink)
         }
@@ -46,8 +43,7 @@ module.exports.identifyService = async (email, phoneNumber) => {
         response = generateOutput(finalCotacts, idToLink)
         pool.close()
         return {
-            status: 200,
-            data: response
+            contact: response
         }
     } catch (error) {
         console.log("Error from identifyService")

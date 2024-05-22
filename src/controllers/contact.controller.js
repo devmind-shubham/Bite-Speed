@@ -13,7 +13,7 @@ module.exports.identifyController = async (req, res) => {
         }
 
         const response = await identifyService(email, phoneNumber)
-        res.status(response.status).send(response)
+        res.status(200).send(response)
 
     } catch (error) {
         console.log("Error -> ", error)
