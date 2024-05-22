@@ -4,7 +4,7 @@
   "description": "Backend Assignment",
   "main": "src/server.js",
   "scripts": {
-    "start": "cross-env NODE_ENV=prod V=1 node ./src/server.js",
+    "start": "cross-env NODE_ENV=prod node ./src/server.js",
     "test": "cross-env NODE_ENV=test nodemon ./src/server.js",
     "dev": "cross-env NODE_ENV=dev nodemon ./src/server.js "
   },
@@ -14,10 +14,10 @@
     "body-parser": "^1.20.2",
     "express": "^4.19.2",
     "mssql": "^10.0.2",
-    "nodemon": "^3.1.0"
+    "dotenv": "^16.4.5"
   },
   "devDependencies": {
     "cross-env": "^7.0.3",
-    "dotenv": "^16.4.5"
+    "nodemon": "^3.1.0"
   }
 }

@@ -1,7 +1,7 @@
+require("dotenv").config({ path: `.env.${process.env.NODE_ENV}` })
+
 const express = require("express");
 const routes = require("./routes/index")
-require("dotenv").config({ path: `./.env.${process.env.NODE_ENV}` })
-const connectionPool = require("./config/db.connection.pool")
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));

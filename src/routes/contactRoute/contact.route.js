@@ -1,9 +1,7 @@
 const express = require("express")
-
+const { identifyController } = require("../../controllers/contact.controller")
 const router = express.Router()
 
-router.get('/identify', (req, res) => {
-    res.status(200).send({ status: 200, message: "From contact route." })
-})
+router.post('/identify', identifyController)
 
 module.exports = router
