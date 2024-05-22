@@ -20,3 +20,20 @@ module.exports.areContactsAvailable = (contacts, email, phoneNumber) => {
         throw error
     }
 }
+
+module.exports.generateOutput = (contacts, id) => {
+    try {
+        const response = { "primaryContatctId": id, "emails": [], "phoneNumbers": [], "secondaryContactIds": [] }
+        for (let item of contacts ?? []) {
+            if (!response.emails.includes(item.email))
+                response.emails.push(item.email)
+            if (!response.phoneNumbers.includes(item.phoneNumber))
+                response.phoneNumbers.push(item.phoneNumber)
+            if (item.linkPrecedence == 'secondary')
+                response.secondaryContactIds.push(item.id)
+        }
+        return response
+    } catch (error) {
+        throw error
+    }
+}
