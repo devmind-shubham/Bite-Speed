@@ -14,8 +14,7 @@ module.exports.identifyService = async (email, phoneNumber) => {
             finalCotacts = await contactModel.fetchLinkedContacts(pool, primaryContactId)
             response = generateOutput(finalCotacts, primaryContactId)
             return {
-                status: 200,
-                data: response
+                contact: response
             }
         }
         const result = await Promise.all([
