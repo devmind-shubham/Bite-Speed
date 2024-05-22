@@ -19,7 +19,6 @@ const sqlConfig = {
         encrypt: true, // for azure 
     }
 }
-console.log(sqlConfig)
 let pool
 (async () => {
     try {
