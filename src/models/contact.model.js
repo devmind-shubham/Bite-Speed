@@ -66,7 +66,12 @@ module.exports.fetchPrimaryContacts = async (pool, email, phoneNumber) => {
 module.exports.insertContact = async (pool, email, phoneNumber, linkPrecedence = "primary", linkedId = null, updatedAt = null) => {
     try {
         const data = await this.executeQuery(pool,
-            `INSERT INTO contacts (email, phoneNumber, linkedId, linkPrecedence, updatedAt) values(@email, @phoneNumber, @linkedId, @linkPrecedence, @updatedAt)`,
+            `INSERT INTO contacts (email, phoneNumber, linkedId, linkPrecedence, updatedAt)
+            OUTPUT inserted.id
+            SELECT @email, @phoneNumber, @linkedId, @linkPrecedence, @updatedAt
+            WHERE NOT EXISTS (
+              SELECT 1 FROM contacts WHERE email = @email AND phoneNumber = @phoneNumber
+            )`,
             [
                 { "key": "email", "value": email },
                 { "key": "phoneNumber", "value": phoneNumber },
