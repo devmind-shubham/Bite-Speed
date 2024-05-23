@@ -44,8 +44,8 @@ Returns an HTTP 200 response with a JSON payload containing the consolidated con
 ## Installation
 
 #### Prerequisites
-- Node.js installed
-- A local or remote MySQL database
+- Node.js installed.
+- A local or remote MSSQL database(Azure SQL).
 
 #### 1. Clone the repository to your local machine:
 
@@ -87,7 +87,7 @@ Replace <database_server>, <database_user>, <database_password>, and <database_n
 ## Tech stack used
 
 - NodeJS
-- MSSQL (Microsoft Azure AQL)
+- MSSQL (Microsoft Azure SQL)
 - Render.com (For Hosting)
 
 
