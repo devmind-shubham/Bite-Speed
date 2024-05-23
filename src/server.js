@@ -15,7 +15,7 @@ app.get('/', (req, res) => {
 app.use('/api', routes)
 
 // --- Start the server ---
-const port = 8080;
+const port = process.env.PORT || 8080;
 app.listen(port, () => {
     console.log(`${process.env.NODE_ENV.toUpperCase()} server is running on port ${port}`);
 });
