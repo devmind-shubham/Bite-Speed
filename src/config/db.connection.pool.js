@@ -23,13 +23,7 @@ let pool
 (async () => {
     try {
         pool = new sql.ConnectionPool(sqlConfig)
-
-        const poolConnect = pool.connect().then(pl => {
-            console.log("MSSql DB Connected To : -----  ", process.env.DB_NAME);
-            pl.close()
-        }).catch(function (err) {
-            console.log("MSSql DB Connect Error *** ", err);
-        })
+        console.log("MSSql DB Connected To : -----  ", process.env.DB_NAME);
     }
     catch (error) {
         console.log("DB connection error-->", error)
